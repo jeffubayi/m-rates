@@ -58,9 +58,7 @@ const Layout = ({ children }: Props) => {
         </Tabs>
       </AppBar>
       </header>
-      <div sx={{py:1}}>
       {children}
-      </div>
       <footer
       >
         <Box sx={{ mt: "2rem" }}>
