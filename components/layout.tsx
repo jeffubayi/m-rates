@@ -17,14 +17,14 @@ import Toolbar from '@mui/material/Toolbar';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Settings from '@mui/icons-material/Settings';
-
-
+import {useRouter} from "next/router"
 
 interface Props {
   children: JSX.Element;
 }
 
 const Layout = ({ children }: Props) => {
+  const router = useRouter()
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -52,9 +52,9 @@ const Layout = ({ children }: Props) => {
       </AppBar>
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Tabs value={value} onChange={handleChange} textColor="inherit">
-          <Tab label="Send & Withdraw" sx={{ textTransform: "capitalize" }} />
-          <Tab label="Lipa na Mpesa" sx={{ textTransform: "capitalize" }} />
-          <Tab label="Others" sx={{ textTransform: "capitalize" }} />
+          <Tab label="SEND/WITHDRAW" onClick={()=>router.push("/")}/>
+          <Tab label="LIPA NA MPESA" onClick={()=>router.push("/lipaNaMpesa")} />
+          <Tab label="OTHERS" onClick={()=>router.push("/others")} />
         </Tabs>
       </AppBar>
       </header>
@@ -62,17 +62,7 @@ const Layout = ({ children }: Props) => {
       <footer
       >
         <Box sx={{ mt: "2rem" }}>
-          {/* <BottomNavigation
-            showLabels
-            value={values}
-            onChange={(event, newValue) => {
-              setValues(newValue);
-            }}
-          >
-            <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
-          </BottomNavigation> */}
+          
         </Box>
       </footer>
     </Main>
