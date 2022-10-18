@@ -8,7 +8,7 @@ type Data = {
   movies?: [];
   error?: string;
   message?: string;
-  charges?: any;
+  sendAndWithdraw?: any;
 };
 
 export default function handler(
@@ -20,48 +20,69 @@ export default function handler(
 
   console.log(`amont`, amont);
   if (amont) {
-    let val: string | number = "";
-    let val2: string | number = "";
-    let val3: string | number = "";
-    let val4: string | number = "";
-    let val5: string | number = "";
+    let val: string | number = 0;
+    let val2: string | number = 0;
+    let val3: string | number = 0;
+    let val4: string | number = 0;
+    let val5: string | number = 0;
+    let val6: string | number = 0;
+    let val7: string | number = 0;
+    let val8: string | number = 0;
 
-    if (amont <= 0) {
-      val = "";
-      val2 = "";
-      val3 = "";
-      val4 = "";
-      val5 = "";
+    if (amont == 0 || "") {
+      val = 0;
+      val2 = 0;
+      val3 = 0;
+      val4 = 0;
+      val5 = 0;
+      val6 = 0;
+      val7 = 0;
+      val8 = 0;
     } else if (amont <= 100) {
-      val = "FREE";
-      val2 = "N/A";
-      val3 = "N/A";
-      val4 = "N/A";
-      val5 = "10";
+      val = 0;
+      val2 = 0;
+      val3 = 10;
+      val4 = 90;
+      val5 = 100;
+      val6 = 100;
+      val7 = 110;
+      val8 = 110;
     } else if (amont <= 199) {
       val = 11;
       val2 = 11;
       val3 = 45;
-      val4 = "N/A";
+      val4 = 0;
       val5 = 27;
+      val6 = 100;
+      val7 = 110;
+      val8 = 110;
     } else if (amont <= 500) {
       val = 11;
       val2 = 11;
       val3 = 45;
       val4 = 34;
       val5 = 27;
+      val6 = 100;
+      val7 = 110;
+      val8 = 110;
     } else if (amont <= 1000) {
       val = 15;
       val2 = 15;
       val3 = 49;
       val4 = 34;
       val5 = 28;
+      val6 = 100;
+      val7 = 110;
+      val8 = 110;
     } else if (amont <= 1500) {
       val = 26;
       val2 = 26;
       val3 = 59;
       val4 = 34;
       val5 = 28;
+      val6 = 100;
+      val7 = 110;
+      val8 = 110;
     } else if (amont <= 2500) {
       val = 41;
       val2 = 41;
@@ -134,15 +155,18 @@ export default function handler(
       val3 = "please enter numbers";
       val4 = "please enter numbers";
     }
-    const charges = [
-      { type: "send to mpesa user", amount: val },
-      { type: "other mobile money  user", amount: val2 },
-      { type: "mpesa unregistered", amount: val3 },
-      { type: "mpesa agent withdrawal", amount: val4 },
-      { type: "ATM withdrawal", amount: val5 },
+    const sendAndWithdraw = [
+      { type: "Send to Registered Number", amount: val },
+      { type: "Send to Unregistered Number", amount: val2 },
+      { type: "Withdraw at Agent", amount: val3 },
+      { type: "Maximum Withdrawable at Agent", amount: val4 },
+      { type: "Minimum Balance - Send to Registered", amount: val5 },
+      { type: "Minimum Balance - Send to Unregistered", amount: val6 },
+      { type: "Amount + Withdrawal & Sending Charge", amount: val7 },
+      { type: "Amount + Withdrawal Charge", amount: val8 },
     ];
     res.send({
-      charges,
+      sendAndWithdraw,
     });
   }
 }
