@@ -1,10 +1,6 @@
-## Whats In
+## M-rates
 
-Search and view your favourite movies
-
-<img width="1440" alt="Screenshot 2022-04-25 at 13 33 48" src="https://user-images.githubusercontent.com/47192245/165074847-96839bf6-64df-46a2-8acb-7224b4855f7f.png">
-
-<img width="1438" alt="Screenshot 2022-04-25 at 13 34 11" src="https://user-images.githubusercontent.com/47192245/165074859-0ddf3dc8-8621-491b-9712-a213acd56509.png">
+Mpesa cost calculator
 
 
 ### Technology
@@ -12,13 +8,12 @@ Search and view your favourite movies
 -  Nextjs
 -  Material UI
 -  Typescript
--  OMDB api
 
 ### How to run the app locally
 
 ```bash
 # Checkout to the current branch
-  git clone https://github.com/jeffubayi/whats-in
+  git clone https://github.com/jeffubayi/m-rates
 
 # install dependencies
   yarn 
@@ -29,22 +24,22 @@ Search and view your favourite movies
 
 ## Features
 
-- Search for movies 
-- View movie details 
-- Like favourite movie
+- Send and withdraw cost 
+- Lipa na mpesa cost
+- Other charges i.e fuliza mshwari
 - Mobile responsive view
 
 ## Tests
-To test if any requests and responses are fetched from the omdb api endpoint
-i.e james bond movies
+To test if any requests and responses are fetched from the mpesa api endpoint
+i.e Ksh 100
 
-### get movies by name:
+### get send and Withdraw costs:
 
- https://whats-in-pi.vercel.app/api/getMoviesByName?name=james bond
+ https://m-rates.vercel.app/api/sendAndWithraw?amount=100
  
-### get movie by id :
+### get lipa na mpesa costs :
 
- https://whats-in-pi.vercel.app/api/getMoviesById?id=tt0366629
+  https://m-rates.vercel.app/api/lipaNaMpesa?amount=100
   
 
 
