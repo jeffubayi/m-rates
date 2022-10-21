@@ -1,4 +1,4 @@
-import { Container, Paper, Box ,Chip,Rating,ImageListItemBar} from "@mui/material";
+import { Container, Paper, Box, Chip, Rating, ImageListItemBar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Header = styled(Paper)(({ theme }) => ({
@@ -11,7 +11,8 @@ export const Header = styled(Paper)(({ theme }) => ({
 export const Main = styled(Container)(() => ({
   bgcolor: "#F5F5F5",
   height: "100vh",
-  marginTop: "1rem",
+  padding: 0,
+  marginTop: 0
 }));
 
 export const Item = styled(Paper)(({ theme }) => ({
@@ -20,7 +21,7 @@ export const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "start",
   color: theme.palette.text.secondary,
-  boxShadow:"none"
+  boxShadow: "none"
 }));
 
 export const FormWrapper = styled(Box)(() => ({
@@ -28,7 +29,7 @@ export const FormWrapper = styled(Box)(() => ({
   borderRadius: "0.5rem",
 }));
 export const PageWrapper = styled(Box)(() => ({
-  padding:"0.6rem"
+  padding: "0.6rem"
 }));
 
 export const Badge = styled(Chip)(() => ({
@@ -50,6 +51,6 @@ export const ItemBar = styled(ImageListItemBar)({
   '.css-dasnyc-MuiImageListItemBar-title': {
     whiteSpace: "wrap",
     background: "rgba(0, 0, 0, 0.85)",
-    marginTop:20
+    marginTop: 20
   },
 });

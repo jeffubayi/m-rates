@@ -9,3 +9,8 @@ export const rateTypes =
         { type: "Amount + Withdrawal & Sending Charge", amount: 0 },
         { type: "Amount + Withdrawal Charge", amount: 0 }
     ]
+
+export type costs = {
+    type: string,
+    amount: number,
+}

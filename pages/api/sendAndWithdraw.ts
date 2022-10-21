@@ -15,11 +15,8 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const amont: any = req.query.amount;
-  console.log(`res`, amont);
-
-  console.log(`amont`, amont);
-  if (amont) {
+  const amount: any = req.query.amount;
+  if (amount) {
     let val: string | number = 0;
     let val2: string | number = 0;
     let val3: string | number = 0;
@@ -29,7 +26,7 @@ export default function handler(
     let val7: string | number = 0;
     let val8: string | number = 0;
 
-    if (amont == 0 || "") {
+    if (amount == 0 || "") {
       val = 0;
       val2 = 0;
       val3 = 0;
@@ -38,7 +35,7 @@ export default function handler(
       val6 = 0;
       val7 = 0;
       val8 = 0;
-    } else if (amont <= 100) {
+    } else if (amount <= 100) {
       val = 0;
       val2 = 0;
       val3 = 10;
@@ -47,7 +44,7 @@ export default function handler(
       val6 = 100;
       val7 = 110;
       val8 = 110;
-    } else if (amont <= 199) {
+    } else if (amount <= 199) {
       val = 11;
       val2 = 11;
       val3 = 45;
@@ -56,7 +53,7 @@ export default function handler(
       val6 = 100;
       val7 = 110;
       val8 = 110;
-    } else if (amont <= 500) {
+    } else if (amount <= 500) {
       val = 11;
       val2 = 11;
       val3 = 45;
@@ -65,7 +62,7 @@ export default function handler(
       val6 = 100;
       val7 = 110;
       val8 = 110;
-    } else if (amont <= 1000) {
+    } else if (amount <= 1000) {
       val = 15;
       val2 = 15;
       val3 = 49;
@@ -74,7 +71,7 @@ export default function handler(
       val6 = 100;
       val7 = 110;
       val8 = 110;
-    } else if (amont <= 1500) {
+    } else if (amount <= 1500) {
       val = 26;
       val2 = 26;
       val3 = 59;
@@ -83,67 +80,67 @@ export default function handler(
       val6 = 100;
       val7 = 110;
       val8 = 110;
-    } else if (amont <= 2500) {
+    } else if (amount <= 2500) {
       val = 41;
       val2 = 41;
       val3 = 74;
       val4 = 34;
       val5 = 28;
-    } else if (amont <= 3500) {
+    } else if (amount <= 3500) {
       val = 56;
       val2 = 56;
       val3 = 112;
       val4 = 67;
       val5 = 50;
-    } else if (amont <= 5000) {
+    } else if (amount <= 5000) {
       val = 61;
       val2 = 61;
       val3 = 135;
       val4 = 67;
       val5 = 67;
-    } else if (amont <= 7500) {
+    } else if (amount <= 7500) {
       val = 77;
       val2 = 77;
       val3 = 166;
       val4 = 112;
       val5 = 84;
-    } else if (amont <= 10000) {
+    } else if (amount <= 10000) {
       val = 87;
       val2 = 87;
       val3 = 205;
       val4 = 112;
       val5 = 112;
-    } else if (amont <= 15000) {
+    } else if (amount <= 15000) {
       val = 97;
       val2 = 97;
       val3 = 265;
       val4 = 197;
       val5 = 162;
-    } else if (amont <= 20000) {
+    } else if (amount <= 20000) {
       val = 102;
       val2 = 102;
       val3 = 288;
       val4 = 197;
       val5 = 180;
-    } else if (amont <= 35000) {
+    } else if (amount <= 35000) {
       val = 105;
       val2 = 105;
       val3 = 309;
       val4 = "N/A";
       val5 = 191;
-    } else if (amont <= 50000) {
+    } else if (amount <= 50000) {
       val = 105;
       val2 = 105;
       val3 = "N/A";
       val4 = "N/A";
       val5 = 191;
-    } else if (amont <= 70000) {
+    } else if (amount <= 70000) {
       val = 105;
       val2 = 105;
       val3 = "N/A";
       val4 = "N/A";
       val5 = 300;
-    } else if (amont > 70000) {
+    } else if (amount > 70000) {
       val = "ammount exceeds maximum transaction allowed";
       val2 = "ammount exceeds maximum transaction allowed";
       val3 = "ammount exceeds maximum transaction allowed";

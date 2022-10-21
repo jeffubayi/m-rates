@@ -3,18 +3,19 @@ import React, { useState, useEffect, useMemo } from "react";
 import { FormWrapper, PageWrapper } from "../styles";
 import { debounce } from "lodash";
 import {
-  Grid,
-  TextField,
-  ListItem,
+  Grid, ListItem,
   ListItemButton,
   ListItemText,
   Paper,
   Typography,
 } from "@mui/material";
-import { StyledRating } from "../styles";
-import { green } from "@mui/material/colors";
+import CostCard from "../components/costCard";
+import TextField from "../components/InputField"
 
-
+interface rateProps {
+  amount: number,
+  type: string,
+}
 const Home = () => {
   //create the state for loading  rates
   const [rates, setRates] = useState([]);
@@ -26,7 +27,6 @@ const Home = () => {
     try {
       const res = await fetch(`/api/sendAndWithdraw?amount=${query}`);
       const rateList = await res.json();
-      console.log(`rateList`, rateList.sendAndWithdraw)
       setRates(rateList.sendAndWithdraw);
     } catch (error) {
       error
@@ -56,8 +56,6 @@ const Home = () => {
     <>
       <Head>
         <title>Mpesa Cost calculator</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=ubuntu:wght@400&display=swap"
           rel="stylesheet"
@@ -68,60 +66,48 @@ const Home = () => {
           <Grid item xs={12} md={12} sx={{ mx: 1, mt: 1 }}>
             <FormWrapper component="div">
               <TextField
-                size="small"
                 label="Amount"
-                onChange={handleChange}
-                className="input"
-                sx={{
-                  borderRadius: "10rem",
-                  boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
-                }}
+                handleChange={handleChange}
                 type="number"
                 name="query"
                 placeholder="Enter amount in ksh..."
-                fullWidth
               />
             </FormWrapper>
           </Grid>
-          {rates.map((rate: any, index: any) => {
-            return (
-
-              <Grid key={index} item xs={12} md={12} sx={{ mx: 2 }}>
-                <Paper
-                  key={index}
-                  sx={{
-                    maxWidth: 936, borderRadius: "0.5rem",
-                    boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
-                  }}>
-                  <ListItem
-                    secondaryAction={
+          {rates.map(({ amount, type }: rateProps, index: any) => {
+            <Grid key={index} item xs={12} md={12} sx={{ mx: 2 }}>
+              {/* <CostCard  amount={amount} type={type} id={index}/> */}
+              <Paper
+                sx={{
+                  maxWidth: 936, borderRadius: "0.5rem",
+                  boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
+                }}>
+                <ListItem
+                  secondaryAction={
+                    <Typography
+                      sx={{ display: 'inline', fontWeight: "500" }}
+                      component="span"
+                      variant="button"
+                      color="primary"
+                    >
+                      {amount}
+                    </Typography>
+                  }
+                  disablePadding
+                >
+                  <ListItemButton>
+                    <ListItemText id={index} primary={
                       <Typography
-                        sx={{ display: 'inline', fontWeight: "500" }}
                         component="span"
-                        variant="button"
-                        color="primary"
+                        variant="body2"
                       >
-                        {rate.amount}
-                      </Typography>
-                    }
-                    disablePadding
-                  >
-                    <ListItemButton>
-                      <ListItemText id={index} primary={
-                        <Typography
-                          component="span"
-                          variant="body2"
-                        >
-                          {rate.type}
-                        </Typography>} />
-                    </ListItemButton>
-                  </ListItem>
-                </Paper >
-
-              </Grid>
-            )
-          }
-          )}
+                        {type}
+                      </Typography>} />
+                  </ListItemButton>
+                </ListItem>
+              </Paper >
+            </Grid>
+          })}
         </Grid>
       </PageWrapper>
     </>
