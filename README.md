@@ -26,7 +26,7 @@ Mpesa cost calculator
 
 - Send and withdraw cost 
 - Lipa na mpesa cost
-- Other charges i.e fuliza mshwari
+- Other charges i.e fuliza ,mshwari
 - Mobile responsive view
 
 ## Tests
@@ -35,7 +35,7 @@ i.e Ksh 100
 
 ### get send and Withdraw costs:
 
- https://m-rates.vercel.app/api/sendAndWithraw?amount=100
+ https://m-rates.vercel.app/api/sendAndWithdraw?amount=100
  
 ### get lipa na mpesa costs :
 

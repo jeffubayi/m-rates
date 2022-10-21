@@ -1,8 +1,6 @@
 import Head from "next/head";
 import React, { useState, useEffect, useMemo } from "react";
-import SearchIcon from "@mui/icons-material/Search";
 import { FormWrapper, PageWrapper } from "../styles";
-import Alert from "../components/alert";
 import { debounce } from "lodash";
 import {
   Grid,
@@ -15,18 +13,7 @@ import {
 } from "@mui/material";
 import { StyledRating } from "../styles";
 import { green } from "@mui/material/colors";
-import CircularProgress from '@mui/material/CircularProgress'
 
-
-const rateTypes = [
-  { type: "Send to Registered Number", amount: 0 },
-  { type: "Send to Unregistered Number", amount: 0 },
-  { type: "Withdraw at Agent", amount: 0 },
-  { type: "Maximum Withdrawable at Agent", amount: 0 },
-  { type: "Minimum Balance - Send to Registered", amount: 0 },
-  { type: "Minimum Balance - Send to Unregistered", amount: 0 },
-  { type: "Amount + Withdrawal & Sending Charge", amount: 0 },
-  { type: "Amount + Withdrawal Charge", amount: 0 }]
 
 const Home = () => {
   //create the state for loading  rates
@@ -37,7 +24,7 @@ const Home = () => {
   const searchRates = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await fetch(`/api/mpesacharges?amount=${query}`);
+      const res = await fetch(`/api/sendAndWithdraw?amount=${query}`);
       const rateList = await res.json();
       console.log(`rateList`, rateList.sendAndWithdraw)
       setRates(rateList.sendAndWithdraw);
