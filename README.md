@@ -1,6 +1,6 @@
 ## M-rates
 
-Mpesa cost calculator
+Calculate Safaricom M-PESA transaction charges and fees for sending money and withdrawing money from MPESA Agents & ATMs.
 
 
 ### Technology
