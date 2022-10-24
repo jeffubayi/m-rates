@@ -10,6 +10,15 @@ export const rateTypes =
         { type: "Amount + Withdrawal Charge", amount: 0 }
     ]
 
+export const types =
+    [
+        "Fuliza",
+        "Mshwari",
+        "Global Pay",
+        "MKopa",
+        "ATM",
+    ]
+
 export type costs = {
     type: string,
     amount: number,

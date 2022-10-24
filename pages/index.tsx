@@ -1,16 +1,11 @@
 import Head from "next/head";
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { FormWrapper, PageWrapper } from "../styles";
 import { debounce } from "lodash";
-import {
-  Grid, ListItem,
-  ListItemButton,
-  ListItemText,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import CostCard from "../components/costCard";
 import TextField from "../components/InputField"
+import EmptyCard from "../components/emptyCard"
 
 interface rateProps {
   amount: number,
@@ -56,10 +51,7 @@ const Home = () => {
     <>
       <Head>
         <title>Mpesa Cost calculator</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=ubuntu:wght@400&display=swap"
-          rel="stylesheet"
-        />
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'></link>
       </Head>
       <PageWrapper>
         <Grid container spacing={2}>
@@ -74,40 +66,22 @@ const Home = () => {
               />
             </FormWrapper>
           </Grid>
-          {rates.map(({ amount, type }: rateProps, index: any) => {
-            <Grid key={index} item xs={12} md={12} sx={{ mx: 2 }}>
-              {/* <CostCard  amount={amount} type={type} id={index}/> */}
-              <Paper
-                sx={{
-                  maxWidth: 936, borderRadius: "0.5rem",
-                  boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
-                }}>
-                <ListItem
-                  secondaryAction={
-                    <Typography
-                      sx={{ display: 'inline', fontWeight: "500" }}
-                      component="span"
-                      variant="button"
-                      color="primary"
-                    >
-                      {amount}
-                    </Typography>
-                  }
-                  disablePadding
-                >
-                  <ListItemButton>
-                    <ListItemText id={index} primary={
-                      <Typography
-                        component="span"
-                        variant="body2"
-                      >
-                        {type}
-                      </Typography>} />
-                  </ListItemButton>
-                </ListItem>
-              </Paper >
-            </Grid>
-          })}
+
+          <Grid item xs={12} md={12} sx={{ mx: 2 }}>
+            {rates.length > 0 ? (
+              <>
+                {
+                  rates.map(({ amount, type }: rateProps, index: any) => {
+                    return (
+                      <CostCard amount={amount} type={type} id={index} />
+                    )
+                  })
+                }
+              </>
+            ) : (
+              <EmptyCard />
+            )}
+          </Grid>
         </Grid>
       </PageWrapper>
     </>
