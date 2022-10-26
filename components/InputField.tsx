@@ -1,28 +1,23 @@
-import { TextField } from "@mui/material";
-
+import { TextField, Grid, Paper, Typography } from "@mui/material";
+import { DebounceInput } from 'react-debounce-input';
 interface inputType {
   handleChange: any;
-  name: any; type: any;
-  label: any;
-  placeholder: any;
 }
 
-const RateInput = ({ handleChange, name, type, label, placeholder }: inputType) => {
+const RateInput = ({ handleChange }: inputType) => {
   return (
-    <TextField
-      size="small"
-      label={label}
-      onChange={handleChange}
-      className="input"
-      sx={{
-        borderRadius: "10rem",
-        boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
-      }}
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      fullWidth
-    />
+    <Grid item xs={12} md={12} >
+      <Typography variant="body2">Amount</Typography>
+      <Paper sx={{ borderRadius: "0.5rem", }}>
+        <DebounceInput
+          style={{ width: "100%", border: "none", borderRadius: "0.5rem", height: "20%", padding: "0.5rem" }}
+          minLength={2}
+          debounceTimeout={300}
+          onChange={handleChange}
+
+        />
+      </Paper>
+    </Grid>
   );
 };
 export default RateInput;

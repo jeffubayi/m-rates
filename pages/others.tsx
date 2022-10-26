@@ -18,38 +18,18 @@ interface rateProps {
 const Others = () => {
   //create the state for loading  rates
   const [rates, setRates] = useState([]);
-  const [query, setQuery] = useState("");
 
   //handle rate search by name
-  const searchRates = async (event: any) => {
-    event.preventDefault();
+  const handleChange = async (event: any) => {
+    const amount = event.target.value
     try {
-      const res = await fetch(`/api/charges?amount=${query}`);
+      const res = await fetch(`/api/charges?amount=${amount}`);
       const rateList = await res.json();
       setRates(rateList.charges);
     } catch (error) {
       error
     }
   };
-
-  //handle text input value change
-  const handleChange = (event: any) => {
-    setQuery(event.target.value);
-    searchRates(event);
-  };
-
-  // essential because if we don’t persist this data between re-renders
-  // other implementations of debounce will occur on every re-render
-  const debouncedResults = useMemo(() => {
-    return debounce(handleChange, 200);
-  }, []);
-
-  //clean up any side effects from debounce when our component gets unmounted
-  useEffect(() => {
-    return () => {
-      debouncedResults.cancel();
-    };
-  });
 
   return (
     <>
@@ -61,11 +41,7 @@ const Others = () => {
 
         <Box sx={{ mx: 1, mt: 1 }}>
           <TextField
-            label="Amount"
             handleChange={handleChange}
-            type="number"
-            name="query"
-            placeholder="Enter amount in ksh..."
           />
         </Box>
         <Grid container spacing={2} mt={2}>

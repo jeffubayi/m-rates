@@ -141,16 +141,16 @@ export default function handler(
       val4 = "N/A";
       val5 = 300;
     } else if (amount > 70000) {
-      val = "ammount exceeds maximum transaction allowed";
-      val2 = "ammount exceeds maximum transaction allowed";
-      val3 = "ammount exceeds maximum transaction allowed";
-      val4 = "ammount exceeds maximum transaction allowed";
-      val5 = "ammount exceeds maximum transaction allowed";
+      val = "-";
+      val2 = "-";
+      val3 = "-";
+      val4 = "-";
+      val5 = "-";
     } else {
-      val = "please enter numbers";
-      val2 = "please enter numbers";
-      val3 = "please enter numbers";
-      val4 = "please enter numbers";
+      val = "N/A";
+      val2 = "N/A";
+      val3 = "N/A";
+      val4 = "N/A";
     }
     const sendAndWithdraw = [
       { type: "Send to Registered Number", amount: val },

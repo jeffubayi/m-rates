@@ -12,7 +12,7 @@ import {
     Button,
     Avatar,
     ListItemAvatar,
-    Chip 
+    Chip
 } from "@mui/material";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -30,6 +30,7 @@ const LipaNaMpesa = () => {
     //create the state for loading  rates
     const [rates, setRates] = useState([]);
     const [query, setQuery] = useState("");
+    const [amount, setAmount] = useState("");
     const [value, setValue] = React.useState('paybill');
     const [open, setOpen] = React.useState(false);
 
@@ -61,7 +62,10 @@ const LipaNaMpesa = () => {
     //handle text input value change
     const handleChange = (event: any) => {
         setQuery(event.target.value);
-        searchRates(event);
+    };
+
+    const handleAmountChange = (event: any) => {
+        setAmount(event.target.value);
     };
 
     // essential because if we don’t persist this data between re-renders
@@ -134,14 +138,14 @@ const LipaNaMpesa = () => {
                                         <TextField
                                             size="small"
                                             label="Amount"
-                                            onChange={handleChange}
+                                            onChange={handleAmountChange}
                                             className="input"
                                             sx={{
                                                 borderRadius: "1.5rem",
                                                 boxShadow: "rgb(157 168 189 / 10%) 0px 4px 8px",
                                             }}
                                             type="number"
-                                            name="query"
+                                            name="amount"
                                             placeholder="Enter amount in ksh..."
                                             fullWidth
                                         />
@@ -217,24 +221,24 @@ const LipaNaMpesa = () => {
                     </DialogTitle>
                     <List sx={{ pb: 2 }}>
                         <ListItem alignItems="flex-start" secondaryAction={
-                            <Chip  sx={{  fontWeight: "bold" }} color="primary" label={ `Ksh  ${100}`} />
+                            <Chip sx={{ fontWeight: "bold" }} color="primary" label={`cost: ${100}`} />
                         }>
                             <ListItemAvatar>
                                 <Avatar alt={value} src="/" />
                             </ListItemAvatar>
                             <ListItemText
-                                primary={`${value} Name`}
+                                primary={`${value} #${query} `}
                                 secondary={
                                     <React.Fragment>
 
-                                        {`${value} : `}
+                                        {`Amount: `}
                                         <Typography
                                             sx={{ display: 'inline', fontWeight: "bold" }}
                                             component="span"
                                             variant="subtitle2"
                                             color="primary"
                                         >
-                                           34662718
+                                            {amount}
                                         </Typography>
                                     </React.Fragment>
                                 }
